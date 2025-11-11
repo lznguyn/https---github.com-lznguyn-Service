@@ -20,7 +20,7 @@ namespace MuTraProAPI.Models
         Admin,
         User,
         Coordinator,
-        Arragement,
+        Arrangement,
         Transcription,
         Recorder
     }
