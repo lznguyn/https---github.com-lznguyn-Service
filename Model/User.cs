@@ -22,6 +22,7 @@ namespace MuTraProAPI.Models
         Coordinator,
         Arrangement,
         Transcription,
-        Recorder
+        Recorder,
+        Studio
     }
 }

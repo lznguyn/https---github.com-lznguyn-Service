@@ -67,9 +67,9 @@ $role = $_SESSION['user']['role'] ?? 'Admin';
         <p class="text-gray-700 mb-3">
             🛡 Role: <span class="font-medium"><?php echo htmlspecialchars($role); ?></span>
         </p>
-        <a href="admin_logout.php" class="block w-full text-center bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition mb-2">
+        <button id="logoutBtn" class="block w-full text-center bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition mb-2">
             <i class="fas fa-sign-out-alt mr-2"></i>Đăng xuất
-        </a>
+        </button>
         <div class="flex justify-center text-sm text-gray-500 gap-2">
             <a href="login.php" class="hover:text-primary">Đăng nhập</a> |
             <a href="register.php" class="hover:text-primary">Đăng ký</a>
@@ -120,6 +120,33 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+// Gọi API logout ASP.NET Core
+document.getElementById('logoutBtn')?.addEventListener('click', async () => {
+    if (!confirm("Bạn có chắc chắn muốn đăng xuất không?")) return;
+
+    const token = '<?php echo $_SESSION['token'] ?? ''; ?>';
+
+    try {
+        const res = await fetch('http://localhost:5200/api/Auth/logout', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        });
+
+        if (!res.ok) throw new Error('API logout thất bại');
+
+        const data = await res.json();
+        console.log('Server:', data);
+
+        // Gọi PHP để xóa session
+        window.location.href = 'admin_logout.php';
+    } catch (error) {
+        console.error('Logout error:', error);
+        alert('Có lỗi khi đăng xuất, vui lòng thử lại!');
+    }
+});
+
 </script>
 
 <style>
