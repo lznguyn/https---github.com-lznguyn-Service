@@ -10,6 +10,7 @@ namespace MuTraProAPI.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<MusicSubmission> MusicSubmissions { get; set; }
+        public DbSet<Studio> Studios { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Bắt buộc phải gọi base để đảm bảo các ánh xạ mặc định hoạt động
@@ -27,6 +28,7 @@ namespace MuTraProAPI.Data
             modelBuilder.Entity<MusicSubmission>()
                 .Property(m => m.Status)
                 .HasConversion<string>();
+            
             // THÊM CÁC CẤU HÌNH CHO CÁC ENUM KHÁC NẾU CÓ:
             // Ví dụ: Nếu Order có cột Status là Enum và được lưu là ENUM/VARCHAR trong MySQL:
             // modelBuilder.Entity<Order>()

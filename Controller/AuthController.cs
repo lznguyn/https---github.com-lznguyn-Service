@@ -75,6 +75,16 @@ namespace MuTraProAPI.Controllers
                 }
             });
         }
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            // In a stateless JWT authentication, logout can be handled on the client side
+            // Xóa session
+            HttpContext.Session.Clear();
+
+            // Trả kết quả JSON (client sẽ redirect)
+            return Ok(new { message = "Logged out successfully" });        
+        }
         private string GenerateJwtToken(User user)
         {
             var claims = new[]
