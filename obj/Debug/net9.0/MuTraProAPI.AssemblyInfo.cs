@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MuTraProAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf099bf8b2bfe9d29df735c241fc3c0f2418dda6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50e835caabefff365368e5b0709fd7f21b1c505c")]
 [assembly: System.Reflection.AssemblyProductAttribute("MuTraProAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MuTraProAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

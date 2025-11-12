@@ -56,6 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             case 'recording_artists':
                 header('Location: ../recording_artists/recording_artists_page.php');
                 break;
+            case 'studio':
+                header('Location: studio/studio_page.php');
+                break;
             default:
                 header('Location: dashboard.php');
                 break;

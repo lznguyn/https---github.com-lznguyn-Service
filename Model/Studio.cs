@@ -16,6 +16,13 @@ namespace MuTraProAPI.Models
         [Column("location")]
         public string Location { get; set; } = string.Empty;
 
+        [Column("image")]
+        public string? Image { get; set; }
+
+        [Required]
+        [Column("price")]
+        public decimal Price { get; set; }
+
         [Required]
         [Column("status")]
         public StudioStatus Status { get; set; } = StudioStatus.Available; 

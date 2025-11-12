@@ -24,7 +24,8 @@ if(isset($_POST['submit'])){
             'coordinator' => 2,
             'arrangement' => 3,
             'transcription' => 4,
-            'recorder' => 5
+            'recorder' => 5,
+            'studio' => 6
         ];
 
         $roleInt = $roleMap[strtolower($user_type)] ?? 1; 
@@ -102,6 +103,8 @@ if(isset($_POST['submit'])){
                     <option value="arrangement">Chuyên gia Hòa âm</option>
                     <option value="transcription">Chuyên gia Phiên âm</option>
                     <option value="recorder">Nghệ sĩ Thu âm</option>
+                    <option value="studio">Phòng thu âm</option>
+                   
                 </select>
 
                 <div id="admin-code-container" class="hidden">
