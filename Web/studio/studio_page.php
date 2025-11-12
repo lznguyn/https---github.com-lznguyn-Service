@@ -18,7 +18,7 @@ $api_url = "http://localhost:5200/api/Experts"; // API endpoint của .NET
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-gray-50">
-
+<?php include 'studio_header.php'; ?>
 
 <div class="min-h-screen pt-20 max-w-7xl mx-auto px-4 py-8">
     <div class="bg-white rounded-2xl shadow-sm border p-6 mb-8">
