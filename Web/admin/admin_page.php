@@ -110,6 +110,7 @@ async function loadStats() {
             ${createStatCard('fas fa-users text-green-600', 'Người dùng', data.users_count, 'bg-green-100')}
             ${createStatCard('fas fa-user-shield text-red-600', 'Quản trị viên', data.admins_count, 'bg-red-100')}
             ${createStatCard('fas fa-user-tie text-green-600', 'Staff', data.staff_count, 'bg-green-100')}
+            ${createStatCard('fas fa-comments text-yellow-600', 'Phòng thu âm', data.studios_count, 'bg-yellow-100')}
         `;
     } catch (err) {
         console.error(err);

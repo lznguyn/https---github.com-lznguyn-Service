@@ -53,8 +53,10 @@ namespace MuTraProAPI.Controllers
             var staffCount = await _context.Users
                 .Where(u => u.Role == UserRole.Coordinator)
                 .CountAsync();
+            var studiosCount = await _context.Studios.CountAsync();
 
-            return Ok(new {
+            return Ok(new
+            {
                 total_pendings = totalPendings,
                 total_completed = totalCompleted,
                 orders_count = ordersCount,
@@ -66,8 +68,87 @@ namespace MuTraProAPI.Controllers
                 completed_orders_count = completedOrdersCount,
                 users_count = usersCount,
                 admins_count = adminsCount,
-                staff_count = staffCount
+                staff_count = staffCount,
+                studios_count = studiosCount
             });
         }
+        // ✅ Lấy danh sách đơn hàng
+        [HttpGet("orders")]
+        public async Task<IActionResult> GetAllOrders()
+        {
+            var orders = await _context.Orders
+                .OrderByDescending(o => o.PlacedOn)
+                .Select(o => new
+                {
+                    o.Id,
+                    o.UserId,
+                    o.Name,
+                    o.Number,
+                    o.Email,
+                    o.Method,
+                    o.TotalProducts,
+                    o.TotalPrice,
+                    PaymentStatus = o.PaymentStatus.ToString()
+                })
+                .ToListAsync();
+
+            return Ok(orders);
+        }
+        [HttpGet("orders/{id}")]
+        public async Task<IActionResult> GetOrderById(int id)
+        {
+            var order = await _context.Orders
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order == null)
+                return NotFound(new { message = "Order not found" });
+
+            return Ok(new
+            {
+                order.Id,
+                order.UserId,
+                order.Name,
+                order.Number,
+                order.Email,
+                order.Method,
+                order.TotalProducts,
+                order.TotalPrice,
+                order.PlacedOn,
+                PaymentStatus = order.PaymentStatus.ToString()
+            });
+        }
+        [HttpPatch("orders/{id}/status")]
+        public async Task<IActionResult> UpdateOrderStatus(int id, [FromBody] OrderStatusDto dto)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null) return NotFound();
+
+            if (Enum.TryParse(dto.PaymentStatus, true, out Status status))
+            {
+                order.PaymentStatus = status;
+                await _context.SaveChangesAsync();
+                return Ok(new { message = "Payment status updated successfully." });
+            }
+
+            return BadRequest(new { message = "Invalid payment status." });
+        }
+
+        public class OrderStatusDto
+        {
+            public string PaymentStatus { get; set; } = string.Empty;
+        }
+        [HttpDelete("orders/{id}")]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+                return NotFound();
+
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Order deleted successfully." });
+        }
+
     }
 }
