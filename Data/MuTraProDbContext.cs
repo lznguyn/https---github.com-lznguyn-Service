@@ -11,7 +11,6 @@ namespace MuTraProAPI.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<MusicSubmission> MusicSubmissions { get; set; }
         public DbSet<Studio> Studios { get; set; }
-        public DbSet<Arrangement> Arrangements { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Bắt buộc phải gọi base để đảm bảo các ánh xạ mặc định hoạt động

@@ -27,6 +27,9 @@ namespace MuTraProAPI.Models
         [Required]
         [Column("create_at")]
         public DateTime Create_at { get; set; } = DateTime.Now;
+        [Required]
+        [Column("target_role")]
+        public string TargetRole { get; set; } = string.Empty;
     }
     public enum MusicStatus
     {

@@ -264,3 +264,4 @@ C:\Users\Acer\Desktop\https---github.com-lznguyn-Service\bin\Debug\net9.0\ru\Mic
 C:\Users\Acer\Desktop\https---github.com-lznguyn-Service\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Acer\Desktop\https---github.com-lznguyn-Service\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Acer\Desktop\https---github.com-lznguyn-Service\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Acer\Desktop\https---github.com-lznguyn-Service\bin\Debug\net9.0\MuTraProAPI.staticwebassets.runtime.json
